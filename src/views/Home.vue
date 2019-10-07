@@ -1,8 +1,15 @@
 <template>
   <div class="mt-3">
     <div class="text-secondary text-center">
-      Welcome back
-      <span class="font-weight-bold text-info">{{ user }}</span>
+      <div v-if="user" class="text-center">
+        Welcome back
+        <span class="font-weight-bold text-info">{{ user }}</span>, <a
+          href="#"
+          role="button"
+          class="text-primary"
+          @click="$emit('logout')"
+        >logout</a>
+      </div>
     </div>
     <div class="container text-center">
       <div class="row justify-content-center">
@@ -37,22 +44,8 @@
 </template>
 
 <script>
-import db from "../db.js"
 export default {
   name: "home",
-  data: function() {
-    return {
-      user: null
-    }
-  },
-  mounted() {
-    db.collection("users")
-    .doc("rvcGCoCUDTcGt4xBHtDe")
-    .get()
-    .then(snapshot => {
-      console.log(snapshot);
-      this.user = snapshot.data().name1;
-    });
-  }
+  props: ["user"]
 };
 </script>
