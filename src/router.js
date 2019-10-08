@@ -4,6 +4,8 @@ import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Meetings from "./views/Meetings.vue";
 import Register from "./views/Register.vue";
+import CheckIn from "./views/CheckIn.vue";
+import Attendees from "./views/Attendees.vue";
 
 Vue.use(Router);
 
@@ -28,6 +30,16 @@ export default new Router({
       path: "/register",
       name: "register",
       component: Register
+    },
+    {
+      path: "/checkin/:userID/:meetingID",
+      name: "Check",
+      component: CheckIn
+    },
+    {
+      path: "/attendees/:userID/:meetingID",
+      name: "Attendees",
+      component: Attendees
     },
     {
       path: "*",
